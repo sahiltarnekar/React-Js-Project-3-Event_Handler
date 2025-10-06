@@ -229,31 +229,31 @@ function Form() {
                     <h6 className="mb-2">Submitted Student Data</h6>
                     <ul className="list-group">
                       <li className="list-group-item">
-                        <strong>Name:</strong> {student.name || "-"}
+                        <strong>Name:</strong> {student.name || "N/A"}
                       </li>
                       <li className="list-group-item">
-                        <strong>Roll No:</strong> {student.roll || "-"}
+                        <strong>Roll No:</strong> {student.roll || "N/A"}
                       </li>
                       <li className="list-group-item">
-                        <strong>Class:</strong> {student.className || "-"}
+                        <strong>Class:</strong> {student.className || "N/A"}
                       </li>
                       <li className="list-group-item">
-                        <strong>Section:</strong> {student.section || "-"}
+                        <strong>Section:</strong> {student.section || "N/A"}
                       </li>
                       <li className="list-group-item">
-                        <strong>DOB:</strong> {student.dob || "-"}
+                        <strong>DOB:</strong> {student.dob || "N/A"}
                       </li>
                       <li className="list-group-item">
-                        <strong>Email:</strong> {student.email || "-"}
+                        <strong>Email:</strong> {student.email || "N/A"}
                       </li>
                       <li className="list-group-item">
-                        <strong>Phone:</strong> {student.phone || "-"}
+                        <strong>Phone:</strong> {student.phone || "N/A"}
                       </li>
                       <li className="list-group-item">
-                        <strong>Address:</strong> {student.address || "-"}
+                        <strong>Address:</strong> {student.address || "N/A"}
                       </li>
                       <li className="list-group-item">
-                        <strong>Gender:</strong> {student.gender || "-"}
+                        <strong>Gender:</strong> {student.gender || "N/A"}
                       </li>
                       <li className="list-group-item">
                         <strong>Confirmed:</strong>{" "}
