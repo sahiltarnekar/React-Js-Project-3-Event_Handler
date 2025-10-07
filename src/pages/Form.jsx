@@ -12,11 +12,29 @@ function Form() {
     address: "",
     gender: "",
     agree: false,
+    hobbies: [],
   });
   const [show, setShow] = useState(false);
 
   function input(e) {
     const { name, value, type, checked } = e.target;
+
+    // handle multiple checkboxes named 'hobbies' (store as array)
+    if (type === "checkbox" && name === "hobbies") {
+      setStudent((prev) => {
+        const prevHobbies = prev.hobbies || [];
+        if (checked) {
+          // add hobby if not already present
+          return { ...prev, hobbies: [...prevHobbies, value] };
+        } else {
+          // remove hobby
+          return { ...prev, hobbies: prevHobbies.filter((h) => h !== value) };
+        }
+      });
+      return;
+    }
+
+    // default handling (including single checkbox 'agree')
     setStudent((prev) => ({
       ...prev,
       [name]: type === "checkbox" ? checked : value,
@@ -203,6 +221,69 @@ function Form() {
                     </div>
                   </div>
 
+                  {/* Interests / Hobbies - multiple checkboxes */}
+                  <div className="mb-3">
+                    <label className="form-label small d-block mb-2">
+                      Interests
+                    </label>
+                    <div className="form-check form-check-inline">
+                      <input
+                        className="form-check-input"
+                        type="checkbox"
+                        name="hobbies"
+                        id="hobbyReading"
+                        value="Reading"
+                        checked={student.hobbies?.includes("Reading")}
+                        onChange={input}
+                      />
+                      <label className="form-check-label small" htmlFor="hobbyReading">
+                        Reading
+                      </label>
+                    </div>
+                    <div className="form-check form-check-inline">
+                      <input
+                        className="form-check-input"
+                        type="checkbox"
+                        name="hobbies"
+                        id="hobbySports"
+                        value="Sports"
+                        checked={student.hobbies?.includes("Sports")}
+                        onChange={input}
+                      />
+                      <label className="form-check-label small" htmlFor="hobbySports">
+                        Sports
+                      </label>
+                    </div>
+                    <div className="form-check form-check-inline">
+                      <input
+                        className="form-check-input"
+                        type="checkbox"
+                        name="hobbies"
+                        id="hobbyMusic"
+                        value="Music"
+                        checked={student.hobbies?.includes("Music")}
+                        onChange={input}
+                      />
+                      <label className="form-check-label small" htmlFor="hobbyMusic">
+                        Music
+                      </label>
+                    </div>
+                    <div className="form-check form-check-inline">
+                      <input
+                        className="form-check-input"
+                        type="checkbox"
+                        name="hobbies"
+                        id="hobbyCoding"
+                        value="Coding"
+                        checked={student.hobbies?.includes("Coding")}
+                        onChange={input}
+                      />
+                      <label className="form-check-label small" htmlFor="hobbyCoding">
+                        Coding
+                      </label>
+                    </div>
+                  </div>
+
                   <div className="mb-3 form-check">
                     <input
                       id="agree"
@@ -254,6 +335,14 @@ function Form() {
                       </li>
                       <li className="list-group-item">
                         <strong>Gender:</strong> {student.gender || "N/A"}
+                      </li>
+                      <li className="list-group-item">
+                        <strong>Interests:</strong>{" "}
+                        {student.hobbies && student.hobbies.length > 0 ? (
+                          student.hobbies.join(", ")
+                        ) : (
+                          <em>None selected</em>
+                        )}
                       </li>
                       <li className="list-group-item">
                         <strong>Confirmed:</strong>{" "}
