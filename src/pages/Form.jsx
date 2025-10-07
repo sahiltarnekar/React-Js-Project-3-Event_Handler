@@ -19,7 +19,6 @@ function Form() {
   function input(e) {
     const { name, value, type, checked } = e.target;
 
-    // handle multiple checkboxes named 'hobbies' (store as array)
     if (type === "checkbox" && name === "hobbies") {
       setStudent((prev) => {
         const prevHobbies = prev.hobbies || [];
@@ -34,7 +33,6 @@ function Form() {
       return;
     }
 
-    // default handling (including single checkbox 'agree')
     setStudent((prev) => ({
       ...prev,
       [name]: type === "checkbox" ? checked : value,
